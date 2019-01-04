@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles</title>
+	<script type="text/javascript" src="lib/paper-full.js"></script>
+	<link rel="stylesheet" type="text/css" href="circles.css">
+	<script type="text/paperscript" canvas="myCanvas">
+		var row = 0;
+		var col = 0;
+		var distanceApart = 20;
+		var repeat = 35;
+		var winW = window.innerWidth;
+		var winL = window.innerHeight;
+		
+		var x = (winW/2)- (distanceApart*(repeat/2));
+		var y = (winL/2)- (distanceApart*(repeat/2));
+		var color;
+
+		while(row<repeat){
+			// console.log("creating row "+row);
+			while(col<repeat){
+				//put circle
+				var c = new Shape.Circle({
+					    center: [x, y],
+					    radius: 5,
+					    fillColor: getRandomRGB()
+					});
+				x += distanceApart;
+				
+
+				col++;
+				// console.log("col "+col);
+			}
+			y += distanceApart;
+			x = (winW/2)- (distanceApart*(repeat/2));
+			row++;
+			col = 0;
+		}
+
+		// console.log("row "+row+", col "+col);
+
+
+		function getRandomRGB(){
+			
+			var multiplier = 18;
+			var r = 0;
+			var g = 0;
+			var b = 0;
+
+			r = Math.floor(Math.random()*256);
+			g = Math.floor(Math.random()*256);
+			b = Math.floor(Math.random()*256);
+			
+
+			// r = Math.floor(Math.random()*row*multiplier);
+			// g = Math.floor(Math.random()*row*multiplier);
+			// b = Math.floor(Math.random()*row*multiplier);
+			
+			// r = Math.floor(row*multiplier);
+			// g = Math.floor(row*multiplier);
+			// b = Math.floor(row*multiplier);
+
+			var color = "rgb("+r+", "+g+", "+b+")";
+			return color;
+		}
+
+
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
