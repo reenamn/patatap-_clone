@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Patatap Clone</title>
+
+	<script type="text/javascript" src="lib/paper-full.js"></script>
+	<link rel="stylesheet" type="text/css" href="patatap_clone.css">
+	<script type="text/paperscript" canvas="myCanvas">
+		
+
+		function onKeyDown(event) {
+
+
+			//find a random point in the screen within the viewable area
+			var maxPoint = new Point(view.size.width, view.size.height);
+			var randomPoint = Point.random();
+			var point = maxPoint * randomPoint;
+
+			var c = new Shape.Circle({
+					    center: point,
+					    radius: Math.random()*75,
+					    fillColor: getRandomRGB()
+					});
+		}
+
+
+		function getRandomRGB(){
+			
+			var multiplier = 18;
+			var r = 0;
+			var g = 0;
+			var b = 0;
+
+			r = Math.floor(Math.random()*256);
+			g = Math.floor(Math.random()*256);
+			b = Math.floor(Math.random()*256);
+
+			var color = "rgb("+r+", "+g+", "+b+")";
+			return color;
+		}
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+
+</body>
+</html>
