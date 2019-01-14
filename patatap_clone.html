@@ -184,7 +184,7 @@
 						    radius: 500,
 						});
 
-				console.log(keyData[event.key].color);
+				// console.log(keyData[event.key].color);
 
 				newCircle.fillColor = keyData[event.key].color;
 				keyData[event.key].sound.play();
@@ -216,6 +216,17 @@
 			{
 				circles[i].fillColor.hue +=1;
 				circles[i].scale(.9);
+
+				//check to see if the circle is small, if so, remove it.
+				if(circles[i].area < 1)
+				{
+					//remove from the canvas
+					circles[i].remove();
+
+					//remove 1 item at index [i] from the array
+					circles.splice(i, 1);
+					console.log(circles);
+				}
 
 			}
 		}
